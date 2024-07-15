@@ -1,5 +1,5 @@
 ---
-- name: Stop Apache2 Service
+- name: Start Apache2 Service
   hosts: all
   become: yes
   tasks:
