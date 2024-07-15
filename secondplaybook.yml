@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   tasks:
-    - name: Ensure apache2 service is stopped
+    - name: Ensure apache2 service is started
       service:
         name: apache2
         state: started
