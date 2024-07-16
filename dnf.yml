@@ -7,8 +7,7 @@
       dnf:
         name: httpd
         state: present
-      # Update the package cache before installing the package
-      update_cache: yes
+
 
     - name: Ensure the httpd service is started
       service:
