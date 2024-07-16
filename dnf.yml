@@ -9,9 +9,9 @@
         state: present
 
 
-    - name: Ensure the httpd service is started
+    - name: Ensure the httpd service is stopped
       service:
         name: httpd
-        state: started
+        state: stopped
         enabled: yes
       # The `enabled` parameter ensures the service is enabled on boot
