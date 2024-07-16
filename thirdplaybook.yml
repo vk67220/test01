@@ -1,9 +1,9 @@
 ---
-- name: Stop Apache2 Service
+- name: Start Apache2 Service
   hosts: all
   become: yes
   tasks:
-    - name: Ensure apache2 service is stopped
+    - name: Ensure apache2 service is started
       service:
         name: apache2
-        state: stopped
+        state: started
