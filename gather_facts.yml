@@ -1,10 +1,10 @@
 ---
-- name: Gather facts and stop Apache2
+- name: Gather facts and start Apache2
   hosts: all
   become: yes
   tasks:
-    - name: Stop Apache2 on Debian-based systems
+    - name: Start Apache2 on Debian-based systems
       service:
         name: apache2
-        state: stopped
+        state: started
       when: ansible_facts['os_family'] == "Debian"
