@@ -1,0 +1,18 @@
+---
+- name: Install and Start httpd Server
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install the httpd package
+      dnf:
+        name: httpd
+        state: present
+      # Update the package cache before installing the package
+      update_cache: yes
+
+    - name: Ensure the httpd service is started
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      # The `enabled` parameter ensures the service is enabled on boot
