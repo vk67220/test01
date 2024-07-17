@@ -2,6 +2,7 @@
 - name: Stop Apache HTTP Server on Ubuntu and Red Hat-based Systems
   hosts: mywebservers
   become: yes
+  tasks:
     - name: Stop apache2 on Debian-based systems
       service:
         name: "{{mywebpackonubuntu}}"
@@ -13,3 +14,5 @@
         name: "{{mywebpackonredhat}}"
         state: stopped
       when: ansible_facts['os_family'] == "RedHat"
+
+    
