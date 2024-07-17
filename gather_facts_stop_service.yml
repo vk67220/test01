@@ -1,6 +1,6 @@
 ---
 - name: Stop Apache HTTP Server on Ubuntu and Red Hat-based Systems
-  hosts: all
+  hosts: mywebservers
   become: yes
   tasks:
     - name: Gather system facts
