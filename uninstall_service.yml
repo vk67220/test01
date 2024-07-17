@@ -1,0 +1,28 @@
+---
+- name: this playbook uninstall httpd
+  hosts: mywebservers
+  become: true
+  tasks:
+  - name: stop httpd service
+    service:
+      name: "{{mywebpackonredhat}}"
+      state: stopped
+    when: ansible_os_family == "RedHat" 
+
+  - name: uninstall httpd
+    yum: 
+      name: "{{mywebpackonredhat}}"
+      state: removed
+    when: ansible_os_family == "RedHat"
+
+  - name: stop apache2 services
+    service: 
+      name: "{{mywebpackonubuntu}}"
+      state: stopped
+    when: ansible_os_family == "Debian"
+
+  - name: uninstall apache2
+    apt: 
+      name: "{{mywebpackonubuntu}}"
+      state: absent 
+    when: ansible_os_family == "Debian"
