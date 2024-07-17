@@ -2,10 +2,6 @@
 - name: Stop Apache HTTP Server on Ubuntu and Red Hat-based Systems
   hosts: mywebservers
   become: yes
-  tasks:
-    - name: Gather system facts
-      setup:
-
     - name: Stop apache2 on Debian-based systems
       service:
         name: "{{mywebpackonubuntu}}"
