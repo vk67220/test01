@@ -1,2 +1,17 @@
+[mywebservers]
 10.0.2.69
+10.0.3.238
+
+[mydbservers]
+10.0.2.70
+10.0.3.45
+
+[myappservers]
+10.0.2.66
+10.0.3.67
+
+[myubuntuserver]
+10.0.2.69
+
+[myredhatserver]
 10.0.3.238
