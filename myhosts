@@ -15,3 +15,8 @@
 
 [myredhatserver]
 10.0.3.238
+
+[webservers:vars]
+var01=value
+mywebpackonubuntu=ubuntu
+mywebpackonredhat=redhat
