@@ -8,12 +8,12 @@
 
     - name: Stop apache2 on Debian-based systems
       service:
-        name: "{mywebpackonubuntu}"
+        name: "{{mywebpackonubuntu}}"
         state: stopped
       when: ansible_facts['os_family'] == "Debian"
 
     - name: Stop httpd on Red Hat-based systems
       service:
-        name: "{mywebpack0nredhat}"
+        name: "{{mywebpackonredhat}}"
         state: stopped
       when: ansible_facts['os_family'] == "RedHat"
