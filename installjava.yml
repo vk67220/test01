@@ -1,0 +1,17 @@
+---
+- name: Install Java on Ubuntu and Red Hat-based systems
+  hosts: mywebservers
+  become: yes
+  tasks:
+    - name: Install default JDK on Ubuntu
+      apt:
+        name: "{{myjavaonubuntu}}"
+        state: present
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Install Java Development Kit on Red Hat-based systems
+      yum:
+        name: "{{myjavaonredhat}}"
+        state: present
+      when: ansible_facts['os_family'] == 'RedHat'
+    
