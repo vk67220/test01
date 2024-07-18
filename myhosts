@@ -16,3 +16,7 @@
 [myredhatserver]
 10.0.3.238
 
+[mywebservers:vars]
+var01=value
+mywebpackonubuntu=apache2
+mywebpackonredhat=httpd
