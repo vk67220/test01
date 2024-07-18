@@ -1,0 +1,14 @@
+---
+- name: Install ifconfig on Ubuntu
+  hosts: mywebservers
+  become: yes
+  tasks:
+    - name: Update APT package index
+      apt:
+        update_cache: yes
+
+    - name: Install net-tools package
+      apt:
+        name: "{{myifconfigonubuntu}}"
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
