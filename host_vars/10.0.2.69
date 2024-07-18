@@ -1,2 +1,3 @@
 ---
 myifconfigonubuntu: net-tools
+myjavaonubuntu: openjdk-17-jdk-y
