@@ -2,19 +2,22 @@
 - hosts: 10.0.2.69
   become: yes
   tasks:
-  - name: i want to execute direct linux command
-    command: hostname -f
-    register: myfirsttaskresults
-  - name: i want to display first task results using debug
-    debug:
-       msg: "{{myfirsttaskresults}}"
-  - name: i want to install git 
-     apt:
-       name: git
-       state: present
-    when: myfirsttaskresults.stderr==""
-  - name: i want to install tree
-     apt:
-       name: tree
-       state: present
-    when: myfirsttaskresults.stderr!==""
+    - name: Execute a direct Linux command
+      command: hostname -f
+      register: myfirsttaskresults
+
+    - name: Display first task results using debug
+      debug:
+        msg: "{{myfirsttaskresults}}"  # Fix to display the output of the command
+
+    - name: Install git
+      apt:
+        name: git
+        state: present
+      when: myfirsttaskresults.stderr == ""  # Condition for installing git
+
+    - name: Install tree
+      apt:
+        name: tree
+        state: present
+      when: myfirsttaskresults.stderr != ""  # Condition for installing tree
