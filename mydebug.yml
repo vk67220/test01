@@ -8,3 +8,13 @@
   - name: i want to display first task results using debug
     debug:
        msg: "{{myfirsttaskresults}}"
+  - name: i want to install git 
+     apt:
+       name: git
+       state: present
+    when: myfirsttaskresults.stderr==""
+  - name: i want to install tree
+     apt:
+       name: tree
+       state: present
+    when: myfirsttaskresults.stderr!==""
