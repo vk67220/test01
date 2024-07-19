@@ -1,23 +1,23 @@
 ---
-- hosts: 10.0.2.69
+- hosts: 10.0.3.238
   become: yes
   tasks:
     - name: Install git
-      apt:
+      dnf:
         name: git
         state: present
       tags:
         - mygit
 
     - name: Install tree
-      apt:
+      dnf:
         name: tree
         state: present
       tags:
         - tree
 
     - name: Install wget
-      apt:
+      dnf:
         name: wget
         state: present
       tags:
