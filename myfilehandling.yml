@@ -1,5 +1,5 @@
 ---
-- hosts: 10.0.2.69
+- hosts: all
   become: yes
   tasks:
   - include_tasks: myfile.yml
