@@ -1,0 +1,8 @@
+---
+- name: Copy a local file to the remote node
+  copy:
+    src: /var/log/firstfile  # Path to the file on the master node
+    dest: /var/log/firstfile  # Path where the file should be copied on the target node
+    mode: '0644'  # Optional: Set file permissions
+    owner: root  # Optional: Set file owner
+    group: root  # Optional: Set file group
