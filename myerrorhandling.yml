@@ -1,0 +1,24 @@
+---
+- hosts: 10.0.3.238
+  become: yes
+  tasks:
+    - name: Uninstall git
+      dnf:
+        name: git
+        state: absent
+      tags:
+        - mygit
+
+    - name: Uninstall tree
+      dnf:
+        name: tree
+        statee: absent
+      tags:
+        - tree
+
+    - name: Uninstall wget
+      dnf:
+        name: wget
+        statee: absent
+      tags:
+        - wget
