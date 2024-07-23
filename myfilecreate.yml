@@ -4,5 +4,5 @@
   tasks:
     - name: Create an empty file
       file:
-        path: /home/maha/firstfile
+        path: /home/maha/firstfile.txt
         state: touch
