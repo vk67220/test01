@@ -1,8 +1,0 @@
----
-- hosts: 10.0.2.69
-  become: yes
-  tasks:
-    - name: Create an empty file
-      file:
-        path: /home/maha/firstfile.txt
-        state: touch

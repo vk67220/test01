@@ -1,7 +1,6 @@
 ---
-- hosts: 10.0.2.69
+- hosts: all
   become: yes
   tasks:
     - name: Include tasks for file creation
       include_tasks: myfilecreate.yml
-      # Wrong placement of `include_tasks` with `hosts` or other playbook settings

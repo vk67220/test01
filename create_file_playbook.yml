@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Ensure the directory exists
+      file:
+        path: /tmp
+        state: directory
+        mode: '0755'
+
+    - name: Create an empty file
+      file:
+        path: /tmp/created_file.txt
+        state: touch
+        mode: '0644'
+
+    - name: Create a file with specific content
+      copy:
+        dest: /tmp/created_file_with_content.txt
+        content: |
+          This file was created by Ansible.
+          It contains some example content.
+        mode: '0644'
+

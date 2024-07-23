@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Create files and directories
+      include_tasks: create_file_playbook.yml
