@@ -15,10 +15,11 @@
         statee: absent
       tags:
         - tree
-
+      ignore_errors: true
     - name: Uninstall wget
       dnf:
         name: wget
         statee: absent
       tags:
         - wget
+      ignore_errors: true
