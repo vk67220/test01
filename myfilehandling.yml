@@ -1,6 +1,0 @@
----
-- hosts: all
-  become: yes
-  tasks:
-    - name: Include tasks for file creation
-      include_tasks: myfilecreate.yml
