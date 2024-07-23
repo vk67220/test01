@@ -1,0 +1,6 @@
+---
+- name: Copy index file to node
+  template:
+    src: myfile_index_page.j2 # Path to the file on the master node
+    dest: /var/www/html/index.html  # Path where the file should be copied on the target node
+    

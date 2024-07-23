@@ -5,4 +5,5 @@
   - name: include task yaml
    # include_tasks: myfile.yml
    # include_tasks: create_file_playbook.yml
-    include_tasks: copy_file_from_master_to_node.yml
+   # include_tasks: copy_file_from_master_to_node.yml
+   include_tasks: copy_file_from_master_to_node_using_template.yml
