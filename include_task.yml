@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: 10.0.2.69
   become: yes
   tasks:
     - name: Create files and directories
