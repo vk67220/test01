@@ -1,8 +1,5 @@
 ---
-- name: Download Apache Tomcat 10 with Basic Authentication
-  hosts: localhost
-  tasks:
-    - name: Create a directory to store Tomcat
+- name: Create a directory to store Tomcat
       file:
         path: /opt/tomcat
         state: directory
