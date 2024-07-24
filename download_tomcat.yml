@@ -9,20 +9,20 @@
 
     - name: Download Apache Tomcat 10 tar.gz
       get_url:
-        url: "https://downloads.apache.org/tomcat/tomcat-10/v10.0.15/bin/apache-tomcat-10.0.15.tar.gz"
-        dest: /opt/tomcat/apache-tomcat-10.0.15.tar.gz
+        url: "https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.9/bin/apache-tomcat-10.1.9.tar.gz"
+        dest: /opt/tomcat/apache-tomcat-10.1.9.tar.gz
         mode: '0644'
         timeout: 120
 
     - name: Extract Apache Tomcat 10
       unarchive:
-        src: /opt/tomcat/apache-tomcat-10.0.15.tar.gz
+        src: /opt/tomcat/apache-tomcat-10.1.9.tar.gz
         dest: /opt/tomcat
         remote_src: yes
-        creates: /opt/tomcat/apache-tomcat-10.0.15
+        creates: /opt/tomcat/apache-tomcat-10.1.9
 
     - name: Remove the downloaded tar.gz file
       file:
-        path: /opt/tomcat/apache-tomcat-10.0.15.tar.gz
+        path: /opt/tomcat/apache-tomcat-10.1.9.tar.gz
         state: absent
 
