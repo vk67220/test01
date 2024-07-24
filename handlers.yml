@@ -31,7 +31,7 @@
       when: ansible_facts['os_family'] == "RedHat"
 
 - name: Ensure Apache HTTP Server is running
-  hosts: mywebservers
+  hosts: 10.0.2.69
   become: yes
   tasks:
     - name: Ensure Apache2 is running on Debian-based systems
