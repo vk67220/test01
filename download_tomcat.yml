@@ -1,15 +1,26 @@
-# File: download_tomcat_tasks.yml
 ---
-- name: Create directory for Tomcat installation
-  ansible.builtin.win_shell: mkdir C:\opt\tomcat
+- name: Create a directory to store Tomcat
+  file:
+    path: /opt/tomcat
+    state: directory
 
-- name: Download Apache Tomcat 9.0.71
-  ansible.builtin.win_get_url:
-    url: "https://downloads.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71-windows-x64.zip"
-    dest: C:\opt\tomcat\apache-tomcat-9.0.71.zip
+   - name: Download Apache Tomcat 10 tar.gz
+     get_url:
+       url: "https://downloads.apache.org/tomcat/tomcat-10/v10.0.15/bin/apache-tomcat-10.0.15.tar.gz"
+       dest: /opt/tomcat/apache-tomcat-10.0.15.tar.gz
+       mode: '0644'
+       timeout: 120
 
-- name: Extract Apache Tomcat 9.0.71
-  ansible.builtin.win_unzip:
-    src: C:\opt\tomcat\apache-tomcat-9.0.71.zip
-    dest: C:\opt\tomcat
-    creates: C:\opt\tomcat\apache-tomcat-9.0.71
+    - name: Extract Apache Tomcat 10
+      unarchive:
+        src: /opt/tomcat/apache-tomcat-10.0.15.tar.gz
+        dest: /opt/tomcat
+        remote_src: yes
+        creates: /opt/tomcat/apache-tomcat-10.0.15
+
+     - name: Remove the downloaded tar.gz file
+       file:
+        path: /opt/tomcat/apache-tomcat-10.0.15.tar.gz
+        state: absent
+
+    
