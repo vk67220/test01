@@ -27,10 +27,6 @@
         path: /opt/tomcat/apache-tomcat-10.1.9.tar.gz
         state: absent
 
-  handlers:
-    - name: restart httpd
-      ansible.builtin.service:
-        name: httpd
-        state: restarted
+  
 
 
