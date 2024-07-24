@@ -1,6 +1,5 @@
 ---
-tasks:
-  - name: Create a directory to store Tomcat
+- name: Create a directory to store Tomcat
     file:
       path: /opt/tomcat
       state: directory
@@ -23,3 +22,5 @@ tasks:
     file:
       path: /opt/tomcat/apache-tomcat-10.0.15.tar.gz
       state: absent
+
+  
