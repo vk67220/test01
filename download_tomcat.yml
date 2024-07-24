@@ -25,3 +25,4 @@
       file:
         path: /opt/tomcat/apache-tomcat-10.0.15.tar.gz
         state: absent
+
