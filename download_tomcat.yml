@@ -27,7 +27,8 @@
         path: /opt/tomcat/apache-tomcat-10.1.9.tar.gz
         state: absent
     handlers:
-    - name: Apache2 restarted
-      services: apache2
-      state: restarted
+    - name: httpd restarted
+      service:
+         name: httpd           
+         state: restarted
 
