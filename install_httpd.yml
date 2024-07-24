@@ -1,0 +1,19 @@
+---
+- name: Install and configure Apache HTTP Server (httpd)
+  hosts: 10.0.3.238
+  become: true  # To escalate privileges using sudo
+  
+  tasks:
+    - name: Install httpd package
+      package:
+        name: httpd
+        state: present
+      notify: Start httpd
+        
+  
+  handlers:
+    - name: Start httpd
+      service:
+        name: httpd
+        state: started
+        enabled: yes
