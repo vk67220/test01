@@ -1,10 +1,37 @@
 ---
-- name: Uninstall apache2
+- name: Uninstall Apache2 and remove files
   hosts: 10.0.2.69
   become: yes
   tasks:
-  - name: Install Apache2 on Debian-based systems
-    apt:
-     name: "{{mywebpackonubuntu}}"
-     state: absent
-    when: ansible_facts['os_family'] == "Debian"
+    - name: Uninstall Apache2 on Debian-based systems
+      apt:
+        name: apache2
+        state: absent
+
+    - name: Remove Apache2 configuration files
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /etc/apache2
+        - /var/www/html
+
+    - name: Remove Apache2 log files
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /var/log/apache2
+
+    - name: Remove Apache2 service files
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /lib/systemd/system/apache2.service
+        - /etc/init.d/apache2
+
+    - name: Remove Apache2 user and group
+      user:
+        name: www-data
+        state: absent
