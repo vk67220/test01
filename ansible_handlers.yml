@@ -1,6 +1,6 @@
 ---
 - name: Install and Start Apache HTTP Server on Ubuntu and Red Hat-based Systems
-  hosts: mywebservers
+  hosts: all
   become: yes
   tasks:
     - name: Install Apache2 on Debian-based systems
