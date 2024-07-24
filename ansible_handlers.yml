@@ -1,0 +1,51 @@
+---
+- name: Install and Start Apache HTTP Server on Ubuntu and Red Hat-based Systems
+  hosts: mywebservers
+  become: yes
+  tasks:
+    - name: Install Apache2 on Debian-based systems
+      apt:
+        name: apache2  # Package name for Apache on Ubuntu
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Install httpd on Red Hat-based systems
+      yum:
+        name: httpd  # Package name for Apache on Red Hat
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
+
+  handlers:
+    - name: start apache2 on Debian-based systems
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: start httpd on Red Hat-based systems
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      when: ansible_facts['os_family'] == "RedHat"
+
+- name: Ensure Apache HTTP Server is running
+  hosts: mywebservers
+  become: yes
+  tasks:
+    - name: Ensure Apache2 is running on Debian-based systems
+      service:
+        name: apache2
+        state: started
+      when: ansible_facts['os_family'] == "Debian"
+      notify:
+        - start apache2 on Debian-based systems
+
+    - name: Ensure httpd is running on Red Hat-based systems
+      service:
+        name: httpd
+        state: started
+      when: ansible_facts['os_family'] == "RedHat"
+      notify:
+        - start httpd on Red Hat-based systems
