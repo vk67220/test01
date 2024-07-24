@@ -1,6 +1,7 @@
 ---
 - name: Download and Configure Apache Tomcat 10
   hosts: mywebservers
+  become: yes
   tasks:
     - name: Create a directory to store Tomcat
       file:
