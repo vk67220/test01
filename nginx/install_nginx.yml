@@ -4,4 +4,5 @@
   become: yes  # Ensure to run tasks as root or with sudo
 
   roles:
-    - nginx
+    - role: test01/nginx
+
