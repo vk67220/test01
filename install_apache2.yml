@@ -23,3 +23,7 @@
       service:
         name: apache2  # Replace with httpd if using Red Hat-based systems
         state: restarted
+    - name: Restart Apache2
+      service:
+        name: httpd
+        state: restarted
