@@ -1,6 +1,6 @@
 ---
 - name: Install Apache2
-  hosts: your_servers
+  hosts: mywebservers
   become: yes
 
   roles:
