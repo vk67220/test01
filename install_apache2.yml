@@ -1,0 +1,25 @@
+---
+- name: Install Apache2
+  hosts: mywebservers
+  become: yes  # Ensure to run as root or with sudo
+
+  tasks:
+    - name: Install Apache2 on Debian systems
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == 'Debian'
+      notify: Restart Apache2
+
+    - name: Install Apache2 on Red Hat systems
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == 'RedHat'
+      notify: Restart Apache2
+
+  handlers:
+    - name: Restart Apache2
+      service:
+        name: apache2  # Replace with httpd if using Red Hat-based systems
+        state: restarted
