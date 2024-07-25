@@ -1,5 +1,5 @@
 ---
-- name: Install Nginx
+- name: Uninstall Nginx
   hosts: mywebservers
   become: yes  # Ensure to run tasks as root or with sudo
 

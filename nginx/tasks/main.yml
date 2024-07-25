@@ -1,10 +1,10 @@
 ---
-- name: Install Nginx
+- name: Uninstall Nginx
   become: yes
   package:
     name: nginx
-    state: present  # Ensure Nginx is installed and up-to-date
+    state: absent  # Ensure Nginx is installed and up-to-date
   tags:
     - nginx
-    - install
+    - uninstall
 
