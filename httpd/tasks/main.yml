@@ -1,2 +1,17 @@
 ---
 # tasks file for httpd
+
+- name: Install httpd
+  yum:
+    name: httpd
+    state: present
+  notify:
+    - Start httpd
+
+# Handler to start httpd service
+- name: Start httpd
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
