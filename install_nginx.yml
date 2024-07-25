@@ -1,8 +1,0 @@
----
-- name: Install Nginx on AMI
-  hosts: mywebservers
-  become: true  # Ensure to run tasks as root or with sudo
-
-  roles:
-    - nginx
-
