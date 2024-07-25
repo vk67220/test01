@@ -6,8 +6,4 @@
   roles:
     - httpd
 
-  handlers:
-    - name: Restart httpd if configuration changes
-      service:
-        name: httpd
-        state: restarted
+  
