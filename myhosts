@@ -1,6 +1,6 @@
 [mywebservers]
-10.0.2.69
-10.0.3.238
+10.0.2.177
+10.0.3.81
 
 [mydbservers]
 10.0.2.70
@@ -11,10 +11,10 @@
 10.0.3.67
 
 [myubuntuserver]
-10.0.2.69
+10.0.3.81
 
 [myredhatserver]
-10.0.3.238
+10.0.2.177
 
 [mywebservers:vars]
 var01=value
