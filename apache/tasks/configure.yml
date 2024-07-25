@@ -1,0 +1,12 @@
+---
+- name: Manage Apache Virtual Hosts
+  template:
+    src: vhost.conf.j2
+    dest: /etc/apache2/sites-available/example.conf  # Adjust path as needed
+  notify: Restart Apache
+
+- name: Ensure Apache is started and enabled
+  ansible.builtin.service:
+    name: apache2  # Adjust service name for CentOS: httpd
+    state: started
+    enabled: yes
