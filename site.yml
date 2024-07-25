@@ -1,6 +1,6 @@
 ---
 - name: Install and Configure Apache Web Server
-  hosts: mywebservers  # Replace with your target hosts or group
+  hosts: 10.0.3.81  # Replace with your target hosts or group
   become: true
 
   roles:
