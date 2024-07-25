@@ -1,7 +1,8 @@
 ---
-- name: Uninstall Nginx
+- name: Install Nginx on AMI
   hosts: mywebservers
-  become: yes  # Ensure to run tasks as root or with sudo
+  become: true  # Ensure to run tasks as root or with sudo
 
   roles:
-    - role: nginx
+    - nginx
+
