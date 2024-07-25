@@ -1,0 +1,13 @@
+---
+- name: Install httpd (Apache HTTP Server)
+  hosts: mywebservers
+  become: yes
+
+  roles:
+    - httpd
+
+  handlers:
+    - name: Restart httpd if configuration changes
+      service:
+        name: httpd
+        state: restarted
