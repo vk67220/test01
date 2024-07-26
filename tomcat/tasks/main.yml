@@ -1,50 +1,10 @@
 ---
-- name: Create tomcat user
-  user:
-    name: tomcat
-    home: /opt/tomcat
-    shell: /bin/false
-    create_home: yes
+- name: Install Tomcat
+  import_tasks: install.yml
 
-- name: Download Tomcat
-  get_url:
-    url: https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.20/bin/apache-tomcat-10.0.20.tar.gz
-    dest: /tmp/apache-tomcat-10.0.20.tar.gz
+- name: Configure Tomcat
+  import_tasks: configure.yml
 
-- name: Extract Tomcat
-  unarchive:
-    src: /tmp/apache-tomcat-10.0.20.tar.gz
-    dest: /opt/tomcat
-    remote_src: yes
-    extra_opts:
-      - --strip-components=1
+- name: Set up Tomcat systemd service
+  import_tasks: systemd.yml
 
-- name: Set ownership and permissions
-  file:
-    path: /opt/tomcat
-    state: directory
-    owner: tomcat
-    group: tomcat
-    recurse: yes
-
-- name: Set executable permissions for Tomcat scripts
-  file:
-    path: /opt/tomcat/bin
-    mode: u+x
-    recurse: yes
-
-- name: Configure Tomcat users
-  template:
-    src: tomcat-users.xml.j2
-    dest: /opt/tomcat/conf/tomcat-users.xml
-
-- name: Remove IP restrictions for Manager and Host Manager
-  blockinfile:
-    path: "{{ item }}"
-    block: |
-      <!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve"
-           allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
-    marker: "# {mark} ANSIBLE MANAGED BLOCK"
-  with_items:
-    - /opt/tomcat/webapps/manager/META-INF/context.xml
-    - /opt/tomcat/webapps/host-manager/META-INF/context.xml
