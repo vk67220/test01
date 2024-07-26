@@ -1,5 +1,5 @@
 ---
-- name: Install firewalld
+- name: Ensure firewalld is installed
   package:
     name: firewalld
     state: present
@@ -16,8 +16,3 @@
     permanent: yes
     state: enabled
   notify: reload firewalld
-
-- name: Reload firewalld
-  firewalld:
-    state: reloaded
-  when: ansible_facts['distribution'] == 'Amazon'
