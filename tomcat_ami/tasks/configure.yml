@@ -1,0 +1,16 @@
+---
+- name: Configure Tomcat users
+  template:
+    src: tomcat-users.xml.j2
+    dest: /opt/tomcat/conf/tomcat-users.xml
+
+- name: Remove IP restrictions for Manager and Host Manager
+  blockinfile:
+    path: "{{ item }}"
+    block: |
+      <!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+           allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+  with_items:
+    - /opt/tomcat/webapps/manager/META-INF/context.xml
+    - /opt/tomcat/webapps/host-manager/META-INF/context.xml

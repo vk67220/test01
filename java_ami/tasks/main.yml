@@ -1,2 +1,5 @@
 ---
-# tasks file for java_ami
+- name: Install Java Development Kit (JDK)
+  package:
+    name: java-1.8.0-openjdk
+    state: present

@@ -1,2 +1,23 @@
 ---
-# tasks file for firewall_ami
+- name: Install firewalld
+  package:
+    name: firewalld
+    state: present
+
+- name: Start and enable firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: Allow traffic on port 8080
+  firewalld:
+    port: 8080/tcp
+    permanent: yes
+    state: enabled
+  notify: reload firewalld
+
+- name: Reload firewalld
+  firewalld:
+    state: reloaded
+  when: ansible_facts['distribution'] == 'Amazon'
