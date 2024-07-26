@@ -2,6 +2,6 @@
 - name: Allow traffic on port 8080
   ufw:
     rule: allow
-    name: 'Tomcat'
     port: 8080
     proto: tcp
+
