@@ -1,2 +1,18 @@
 ---
-# tasks file for java
+- name: Update package manager cache
+  apt:
+    update_cache: yes
+
+- name: Install default JDK
+  apt:
+    name: default-jdk
+    state: present
+
+- name: Check Java version
+  command: java -version
+  register: java_version
+  ignore_errors: yes
+
+- name: Print Java version
+  debug:
+    msg: "{{ java_version.stderr }}"

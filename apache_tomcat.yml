@@ -1,0 +1,9 @@
+---
+- hosts: 10.0.3.81
+  become: yes
+  vars:
+    java_home: /usr/lib/jvm/java-1.11.0-openjdk-amd64
+  roles:
+    - java
+    - tomcat
+    - firewall

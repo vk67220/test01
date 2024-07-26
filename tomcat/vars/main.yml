@@ -1,2 +1,2 @@
----
-# vars file for tomcat
+tomcat_manager_password: 'admin'
+tomcat_admin_password: 'admin'
