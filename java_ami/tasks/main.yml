@@ -1,5 +1,5 @@
 ---
-- name: Install Java Development Kit (OpenJDK 8)
-  amazon_linux_common:  # Amazon Linux 2 uses this module for installing packages
-    name: java-1.8.0-openjdk
+- name: Install Amazon Corretto 21
+  yum:
+    name: java-21-amazon-corretto
     state: present
